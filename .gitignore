@@ -1,9 +1,0 @@
-.env
-.env.*
-!.env.example
-node_modules/
-.cache/
-recordings/
-*.log
-*.zip
-.sites-runtime/

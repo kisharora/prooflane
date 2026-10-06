@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#183f35">
-  <meta name="description" content="Prooflane is an evidence-first workspace for finding freelance opportunities, checking search signals, and building a better shortlist. Powered by SerpApi.">
+  <meta name="description" content="An interactive, fictional-data demo of Prooflane: inspect evidence, compare signals, and build a local shortlist. No live API calls.">
   <title>Prooflane · Opportunity research, with receipts</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23183f35'/%3E%3Cpath d='M9 23V9h8a5 5 0 0 1 0 10h-3' fill='none' stroke='%23f5f0e6' stroke-width='3'/%3E%3Ccircle cx='23' cy='23' r='3' fill='%23c1dd6e'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./styles.css"><script type="module" src="./app.js"></script>
@@ -22,20 +22,20 @@
       <div class="sidebar-divider"></div>
       <div class="workspace-label">THE PROOFLANE WAY</div>
       <div class="sidebar-process"><div><span>01</span><p>Find the signal<small>Search the web + job listings</small></p></div><div><span>02</span><p>Check the context<small>Look for gaps and contradictions</small></p></div><div><span>03</span><p>Make your next move<small>Save the work worth pursuing</small></p></div></div>
-      <div class="sidebar-bottom"><div class="serp-badge"><span class="serp-logo" aria-hidden="true">✳</span><div>Search powered by<strong>SerpApi</strong></div></div><p>Search excerpts are clues.<br>Always check the original source.</p><button id="methodology-button" class="small-link">Read our signal policy ↗</button></div>
+      <div class="sidebar-bottom"><div class="serp-badge"><span class="serp-logo" aria-hidden="true">✳</span><div>Local app integration<strong>SerpApi</strong></div></div><p>Search excerpts are clues.<br>Always check the original source.</p><button id="methodology-button" class="small-link">Read our signal policy ↗</button></div>
     </aside>
     <main id="main">
       <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> OPPORTUNITY WORKBENCH</div><h1>Good work starts<br class="mobile-break"> with a <em>clear signal.</em></h1><p>Find project leads. Inspect the evidence. Spend your energy wisely.</p></div><div class="heading-note"><span class="note-spark">✳</span><span>A little less searching.<br>A lot more knowing.</span></div></div>
       <section class="search-panel" aria-label="Research settings">
         <form id="search-form">
           <div class="search-fields"><label class="skill-field"><span>What do you do?</span><span class="input-wrap"><span aria-hidden="true">⌕</span><input id="skill" name="skill" value="Product design" maxlength="100" minlength="2" required placeholder="e.g. Product design, video editing"></span></label><label class="location-field"><span>Where?</span><span class="input-wrap"><span aria-hidden="true">◎</span><input id="location" name="location" value="Anywhere" maxlength="100" placeholder="City or country"></span></label><button class="primary-button" type="submit" id="search-button">Find opportunities <span aria-hidden="true">↗</span></button></div>
-          <div class="search-options"><label class="check-label"><input type="checkbox" id="remote" checked><span>Remote-friendly</span></label><span class="option-divider"></span><label class="budget-label" for="budget">Search budget <select id="budget"><option value="3">3 requests · quick look</option><option value="5" selected>5 requests · balanced</option><option value="8">8 requests · deeper check</option></select></label><div class="mode-select"><label for="mode" class="sr-only">Data mode</label><select id="mode"><option value="example">Example workspace</option><option value="live">Live SerpApi search</option></select><span class="mode-dot" id="mode-dot"></span></div></div>
+          <div class="search-options"><label class="check-label"><input type="checkbox" id="remote" checked><span>Remote-friendly</span></label><span class="option-divider"></span><label class="budget-label" for="budget">Search budget <select id="budget"><option value="3">3 requests · quick look</option><option value="5" selected>5 requests · balanced</option><option value="8">8 requests · deeper check</option></select></label><div class="mode-select"><label for="mode" class="sr-only">Data mode</label><select id="mode"><option value="example">Example workspace</option><option value="live">About local live mode</option></select><span class="mode-dot" id="mode-dot"></span></div></div>
         </form>
       </section>
       <div class="data-notice" id="data-notice"><span class="notice-icon">◈</span><p><strong>You’re exploring an example workspace.</strong> Fictional leads show how Prooflane spots the difference. No API credits used.</p><button class="notice-link" id="live-info-button">Try live search ↗</button></div>
       <section id="run-status" class="run-status hidden" role="status" aria-live="polite"></section>
       <section id="workspace-content" aria-live="polite"></section>
-      <footer class="main-footer"><span><span class="footer-dot"></span> Thoughtful research. Human decisions.</span><span id="capture-label">EXAMPLE SNAPSHOT · 06 OCT 2026</span></footer>
+      <footer class="main-footer"><a href="./media-preflight/">Media preflight sample ↗</a><span><span class="footer-dot"></span> Thoughtful research. Human decisions.</span><span id="capture-label">EXAMPLE SNAPSHOT · 06 OCT 2026</span></footer>
     </main>
   </div>
   <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div id="detail-content"></div></dialog>
