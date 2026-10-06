@@ -38,6 +38,7 @@ export function createServer({ apiKey = process.env.SERPAPI_API_KEY, client, hou
       }
       if (url.pathname === '/api/research') {
         if (req.method !== 'POST') return json(res, 405, { error: 'Use POST for research.', code: 'METHOD_NOT_ALLOWED' });
+        if (!local) return json(res, 403, { error: 'Live research is available only through this computer’s localhost address.', code: 'LOCAL_ONLY' });
         // Browser requests must originate from this server; no cross-origin API or credential surface.
         if (!apiKey && !client && !(local && sessionKey.status().configured)) return json(res, 503, { error: 'Live search needs a SerpApi key in the server environment. Explore the example workspace or follow the local setup instructions.', code: 'KEY_MISSING' });
         if (busy) return json(res, 409, { error: 'A research run is already in progress. Wait for it to finish before starting another.', code: 'BUSY' });

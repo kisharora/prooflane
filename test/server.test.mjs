@@ -57,3 +57,21 @@ test('complete API run uses the actual adapter contract without leaking provider
   const response = await request(createServer({ apiKey: '', client }), { method: 'POST', path: '/api/research', body: { skill: 'Design', budget: 3, remote: true } });
   assert.equal(response.status, 200); assert.equal(response.json().mode, 'live'); assert.equal(response.json().candidates.length, 1); assert.equal(calls, 3); assert.ok(!response.body.includes(key));
 });
+test('environment and one-run research both reject non-loopback peers and rebinding hosts', async () => {
+  let calls = 0;
+  const client = new SerpApiClient({ apiKey: 'dummy_test_value_not_a_credential', fetchImpl: async () => { calls++; throw new Error('This provider call must never be reached.'); } });
+  const environmentServer = createServer({ apiKey: 'dummy_test_value_not_a_credential', client });
+  const sessionServer = createServer({ apiKey: '' });
+  await request(sessionServer, { method: 'POST', path: '/api/session-key', body: { key: 'dummy_test_value_not_a_credential' } });
+  for (const server of [environmentServer, sessionServer]) {
+    for (const extra of [
+      { host: 'untrusted.example:4173', headers: { origin: 'http://untrusted.example:4173' } },
+      { remote: '192.0.2.50' },
+    ]) {
+      const result = await request(server, { method: 'POST', path: '/api/research', body: { skill: 'Design', budget: 3 }, ...extra });
+      assert.equal(result.status, 403); assert.equal(result.json().code, 'LOCAL_ONLY');
+    }
+  }
+  assert.equal(calls, 0);
+  assert.equal((await request(sessionServer, { path: '/api/config' })).json().liveAvailable, true, 'Rejected research must not consume a prepared one-run key');
+});
