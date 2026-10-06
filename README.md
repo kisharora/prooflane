@@ -8,7 +8,7 @@ A fresh search result can be an old hiring thread with a new reply. A â€œremoteâ
 
 ## Run locally
 
-Requirements: **Node.js 22 or newer**. No package installation or paid LLM subscription is needed.
+Requirements: **Node.js 22.9 or newer**. No package installation or paid LLM subscription is needed.
 
 ```sh
 git clone https://github.com/kisharora/prooflane.git

@@ -27,3 +27,21 @@ Record the real application running at http://127.0.0.1:4173, with its local add
 - A provider outage or no-results response must be shown honestly; do not splice a fictional board under a live label.
 - If a genuine live run cannot be completed, report that limitation and do not describe the entry as fully demonstrated.
 - The final publicly shared link must open without login or access requests, and the total video length must be under three minutes.
+
+## Optional Playwright helper
+
+`scripts/demo-driver.mjs` uses an independently installed, approved Playwright package and a fresh isolated browser context. It never opens normal browser profiles and accepts only a loopback app URL. It never reads or enters a key.
+
+First run visual QA (no real API calls):
+
+```sh
+node scripts/demo-driver.mjs --mode=check --playwright-module=/absolute/path/to/playwright/index.mjs --executable=/absolute/path/to/browser --out=/private/output-folder
+```
+
+Review the generated desktop/mobile board, evidence, shortlist, and trail screenshots before recording. After the user manually configures a one-run key and authorizes up to five live calls:
+
+```sh
+node scripts/demo-driver.mjs --mode=record --live-authorized --playwright-module=/absolute/path/to/playwright/index.mjs --executable=/absolute/path/to/browser --out=/private/output-folder --skill="n8n automation" --location=India
+```
+
+The helper records the actual local UI, rejects a failed or empty live run, preserves explicit example labels for the edge-case segment, saves review-only sanitized results outside the repository, and has a 165-second safety deadline. It does not publish anything. Check final duration independently and review the entire video before public sharing. Do not include the review-only JSON artifact automatically.

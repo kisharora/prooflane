@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "description": "Evidence-first opportunity research powered by SerpApi",
-  "engines": { "node": ">=22" },
+  "engines": { "node": ">=22.9" },
   "scripts": {
     "start": "node --env-file-if-exists=.env server.mjs",
     "dev": "node --watch --env-file-if-exists=.env server.mjs",
