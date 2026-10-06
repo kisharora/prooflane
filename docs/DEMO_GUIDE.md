@@ -30,7 +30,7 @@ Record the real application running at http://127.0.0.1:4173, with its local add
 
 ## Optional Playwright helper
 
-`scripts/demo-driver.mjs` uses an independently installed, approved Playwright package and a fresh isolated browser context. It never opens normal browser profiles and accepts only a loopback app URL. It never reads or enters a key.
+`scripts/demo-driver.mjs` uses an independently installed, approved Playwright package and a fresh isolated browser context. It never opens normal browser profiles and accepts only a loopback app URL. A context-wide route guard blocks every request outside that exact origin, including external fonts, and unexpected new pages are closed. It never reads or enters a key. A small factual recording caption shows the verified local origin; it does not simulate browser chrome.
 
 First run visual QA (no real API calls):
 

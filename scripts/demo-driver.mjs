@@ -29,13 +29,41 @@ if (values.mode === 'record') {
 }
 const browser = await chromium.launch({ headless: !values.headed, chromiumSandbox: true, ...(values.executable ? { executablePath: values.executable } : {}) });
 const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, acceptDownloads: true, reducedMotion: 'reduce', ...(values.mode === 'record' ? { recordVideo: { dir: output, size: { width: 1440, height: 900 } } } : {}) });
-const page = await context.newPage();
+// Every browser request must stay on the exact verified local app origin.
+// This deliberately blocks external fonts and source links; system fonts remain available.
+await context.route('**/*', route => {
+  try { if (new URL(route.request().url()).origin === url.origin) return route.continue(); } catch {}
+  return route.abort('blockedbyclient');
+});
+let primaryPage;
+context.on('page', popup => { if (primaryPage && popup !== primaryPage) void popup.close(); });
+const page = await context.newPage(); primaryPage = page;
+page.on('framenavigated', frame => {
+  if (frame !== page.mainFrame() || frame.url() === 'about:blank') return;
+  try { if (new URL(frame.url()).origin === url.origin) return; } catch {}
+  void page.close();
+});
 page.setDefaultTimeout(10000);
 const errors = []; page.on('pageerror', error => errors.push(error.message));
 const video = page.video();
 const pause = ms => page.waitForTimeout(ms);
-const take = name => page.screenshot({ path: resolve(output, name), fullPage: false });
-async function open() { await page.goto(url.href, { waitUntil: 'networkidle' }); await page.locator('.opportunity-card').first().waitFor(); await page.evaluate(() => document.fonts.ready); }
+const take = async name => {
+  await page.waitForFunction(() => !document.querySelector('#toast')?.classList.contains('visible'));
+  return page.screenshot({ path: resolve(output, name), fullPage: false });
+};
+async function open() {
+  await page.goto(url.href, { waitUntil: 'networkidle' });
+  if (new URL(page.url()).origin !== url.origin) throw new Error('The browser did not reach the authorized local app origin.');
+  await page.locator('.opportunity-card').first().waitFor(); await page.evaluate(() => document.fonts.ready);
+  if (values.mode === 'record') {
+    await page.evaluate(origin => {
+      const note = document.createElement('div'); note.id = 'prooflane-recording-context'; note.setAttribute('role', 'note');
+      note.textContent = `LOCAL SCREEN RECORDING · ${origin}`;
+      Object.assign(note.style, { position: 'fixed', bottom: '10px', right: '12px', padding: '7px 10px', border: '1px solid #cad6ba', borderRadius: '5px', background: '#fbfdf5', color: '#526f3b', font: '10px monospace', zIndex: '100', pointerEvents: 'none' });
+      document.body.append(note);
+    }, url.origin);
+  }
+}
 async function checkJourney() {
   await open();
   await take('prooflane-desktop-board.png');
@@ -56,8 +84,8 @@ async function checkJourney() {
   await take('prooflane-mobile-board.png');
   if (await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)) throw new Error('Mobile page has horizontal overflow.');
   await page.locator('.card-title').first().click(); await take('prooflane-mobile-evidence.png');
-  if (errors.length) throw new Error(`Browser runtime errors: ${errors.join('; ')}`);
-  console.log('PASS: desktop/mobile screenshots, evidence drawer, shortlist, notes, export, search trail, and no runtime errors.');
+  if (errors.length) throw new Error(`Uncaught browser pageerror events: ${errors.join('; ')}`);
+  console.log('PASS: desktop/mobile screenshots, evidence drawer, shortlist, notes, export, search trail, and no uncaught pageerror events.');
 }
 async function recordJourney() {
   await open(); await take('prooflane-before-live.png'); await pause(3000);
@@ -88,7 +116,7 @@ async function recordJourney() {
   await page.getByRole('button', { name: 'Paid design trial for a website project', exact: true }).click(); await pause(4500);
   await page.locator('.evidence-box').last().scrollIntoViewIfNeeded(); await pause(5000);
   await page.locator('[data-action="close-detail"]').click(); await page.locator('#how-button').click(); await pause(4500);
-  if (errors.length) throw new Error(`Browser runtime errors: ${errors.join('; ')}`);
+  if (errors.length) throw new Error(`Uncaught browser pageerror events: ${errors.join('; ')}`);
   console.log(`PASS: real SerpApi flow demonstrated with ${run.stats.requestsUsed} provider requests, ${run.candidates.length} candidates, source evidence, search trail, shortlist, notes, and export. Fixture segment remains explicitly labeled.`);
 }
 let success = false, timer;
