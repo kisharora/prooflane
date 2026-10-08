@@ -1,0 +1,15 @@
+--- a/.sdk/src/cmp/ts/TestDirect_ts.ts
++++ b/.sdk/src/cmp/ts/TestDirect_ts.ts
+@@ -263,8 +263,10 @@
+   // them and the URL-includes assert fails.
+   const pathPlaceholders = new Set<string>()
+   for (const part of pointParts(loadPoint)) {
+-    if (typeof part === 'string' && part.startsWith('{') && part.endsWith('}')) {
+-      pathPlaceholders.add(part.slice(1, -1))
++    if (typeof part === 'string') {
++      for (const match of part.matchAll(/\{([^}]+)\}/g)) {
++        pathPlaceholders.add(match[1])
++      }
+     }
+   }
+   const renameMap = (loadPoint.r?.param || {}) as Record<string, string>

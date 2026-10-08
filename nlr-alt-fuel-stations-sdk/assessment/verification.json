@@ -1,0 +1,63 @@
+{
+  "assessment": "Voxgig task 1: generated SDK and DX report",
+  "started_at_utc": "2026-10-08T16:45:36Z",
+  "engineering_deadline_utc": "2026-10-08T17:15:36Z",
+  "execution": "OpenAI-powered coding assistant acting with Kish Arora authorization; not manual user time",
+  "node": "24.19.0",
+  "npm": "11.9.0",
+  "generator": {
+    "create-sdkgen": "0.30.6",
+    "sdkgen": "4.34.2",
+    "apidef": "8.25.0"
+  },
+  "generated_tests": {
+    "command": "npm --prefix ts test",
+    "pass": 210,
+    "fail": 0,
+    "skip": 9
+  },
+  "api_regression_tests": {
+    "command": "node --test assessment/regression.test.cjs",
+    "pass": 6,
+    "fail": 0
+  },
+  "live_smoke": {
+    "command": "NLR_ALT_FUEL_STATIONS_APIKEY=DEMO_KEY node assessment/live-smoke.cjs",
+    "result": "PASS",
+    "requests": 2,
+    "authentication": "official public demonstration key, not a private credential",
+    "station_id": 1517,
+    "station_name": "LADWP - Truesdale Center"
+  },
+  "doctor": {
+    "result": "expected nonzero",
+    "forks": [
+      "src/cmp/ts/TestDirect_ts.ts"
+    ],
+    "reason": "Documented suffix-placeholder test-generator patch"
+  },
+  "catalog_repositories_checked": 804,
+  "publication": {
+    "repository": "https://github.com/kisharora/prooflane",
+    "branch": "voxgig-nlr-sdk-assessment",
+    "subdirectory": "nlr-alt-fuel-stations-sdk",
+    "npm_published": false
+  },
+  "limits": [
+    "Two read operations only",
+    "No private-account credential or production entitlement test",
+    "No assertion of full API coverage",
+    "Generated docs retain some standalone-repository assumptions; root README supplies actual commands"
+  ],
+  "engineering_completed_at_utc": "2026-10-08T17:01:00Z",
+  "engineering_wall_clock_seconds": 924,
+  "clean_checkout_verification": {
+    "npm_ci": "PASS",
+    "generated_tests": "210 pass, 0 fail, 9 skipped",
+    "regression_tests": "6 pass, 0 fail",
+    "npm_ci_and_generate_in_sdk": "PASS",
+    "tests_after_regeneration": "210 pass, 0 fail, 9 skipped; 6 regression pass",
+    "generated_source_diff_after_regeneration": "none",
+    "doctor": "exactly one expected component fork"
+  }
+}

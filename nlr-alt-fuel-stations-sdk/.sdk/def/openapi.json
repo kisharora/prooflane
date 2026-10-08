@@ -1,0 +1,151 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "NLR Alternative Fuel Stations",
+    "version": "1.0.0",
+    "description": "Small unofficial read-only subset of the NLR Alternative Fuel Stations API; formerly NREL. Auth uses an API key query parameter. DEMO_KEY is a public limited-rate demonstration credential."
+  },
+  "servers": [
+    {
+      "url": "https://developer.nlr.gov/api"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/alt-fuel-stations/v1.json": {
+      "get": {
+        "operationId": "listStations",
+        "tags": [
+          "Station"
+        ],
+        "summary": "List alternative fuel stations",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum stations returned.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "fuel_type",
+            "in": "query",
+            "description": "Fuel code such as ELEC.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Two-letter US state code.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fuel_stations": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Station"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alt-fuel-stations/v1/{id}.json": {
+      "get": {
+        "operationId": "loadStation",
+        "tags": [
+          "Station"
+        ],
+        "summary": "Get a station by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "alt_fuel_station": {
+                      "$ref": "#/components/schemas/Station"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "api_key"
+      }
+    },
+    "schemas": {
+      "Station": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "station_name": {
+            "type": "string"
+          },
+          "fuel_type_code": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "street_address": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

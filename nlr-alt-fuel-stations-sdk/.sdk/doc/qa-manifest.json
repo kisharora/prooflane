@@ -1,0 +1,13 @@
+{
+  "files": [
+    "SUMMARY.md"
+  ],
+  "config": ".sdk/doc/qa/vale.ini",
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Small unofficial read-only subset of the NLR Alternative Fuel Stations API; formerly NREL. Auth uses an API key query parameter. `DEMO_KEY` is a public limited-rate demonstration credential.",
+      "Successful response"
+    ]
+  }
+}

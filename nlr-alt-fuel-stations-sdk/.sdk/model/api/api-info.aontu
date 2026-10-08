@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Small unofficial read-only subset of the NLR Alternative Fuel Stations API; formerly NREL. Auth uses an API key query parameter. DEMO_KEY is a public limited-rate demonstration credential."
+      security: {
+        in: "query"
+        name: "api_key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          url: "https://developer.nlr.gov/api"
+        }
+      ]
+      summary: "Small unofficial read-only subset of the NLR Alternative Fuel Stations API; formerly NREL."
+      title: "NLR Alternative Fuel Stations"
+      version: "1.0.0"
+      website: "https://nlr.gov"
+    }
+  }
+}
+

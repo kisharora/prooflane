@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "station": {
+      "STATION00": {
+        "city": "s50",
+        "fuel_type_code": "s51",
+        "id": "STATION00",
+        "latitude": 83,
+        "longitude": 84,
+        "state": "s55",
+        "station_name": "s56",
+        "street_address": "s57"
+      },
+      "STATION01": {
+        "city": "sa0",
+        "fuel_type_code": "sa1",
+        "id": "STATION01",
+        "latitude": 163,
+        "longitude": 164,
+        "state": "sa5",
+        "station_name": "sa6",
+        "street_address": "sa7"
+      },
+      "STATION02": {
+        "city": "sf0",
+        "fuel_type_code": "sf1",
+        "id": "STATION02",
+        "latitude": 243,
+        "longitude": 244,
+        "state": "sf5",
+        "station_name": "sf6",
+        "street_address": "sf7"
+      }
+    }
+  },
+  "new": {
+    "station": {
+      "station_ref01": {
+        "city": "s140",
+        "fuel_type_code": "s141",
+        "latitude": 323,
+        "longitude": 324,
+        "state": "s145",
+        "station_name": "s146",
+        "street_address": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /alt-fuel-stations/v1.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /alt-fuel-stations/v1/{id}.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}
