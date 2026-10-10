@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Serewick: a fictional candle-brand website concept, featuring AI-generated product imagery and an interactive, local-only gift inquiry demo.">
+  <meta name="theme-color" content="#f3efe7">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <title>Serewick — A quieter kind of glow · Concept demo</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="demo-banner">Concept demo · Fictional product · AI-generated imagery</div>
+  <header class="site-header">
+    <a class="wordmark" href="#" aria-label="Serewick home">serewick<span aria-hidden="true">✳</span></a>
+    <nav aria-label="Main navigation"><a href="#collection">The candle</a><a href="#ritual">The ritual</a><a href="#gifting">Gifting</a></nav>
+    <button class="header-inquiry" type="button" data-open-inquiry>Make it a gift <span aria-hidden="true">↗</span></button>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-line" aria-hidden="true"></span> An imagined home fragrance studio</p>
+        <h1 id="hero-heading">A quieter<br>kind of <em>glow.</em></h1>
+        <p class="hero-description">For the hour when the day softens.<br>A little warmth, a familiar room, and a moment that belongs to you.</p>
+        <a class="button button-dark" href="#collection">Find your evening <span aria-hidden="true">↗</span></a>
+        <div class="hero-bottom"><span>THE AMBER VESSEL</span><span>01 / THE EVENING EDIT</span></div>
+      </div>
+      <figure class="hero-visual">
+        <img src="assets/candle-concept.webp" alt="AI-generated concept of an amber glass candle and brass-colored lid on warm stone, in late-afternoon light" width="1024" height="1536" fetchpriority="high">
+        <figcaption><span>A study in light &amp; stillness</span><span aria-hidden="true">↓</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="editorial-strip" aria-label="Concept design details"><span>Amber glass</span><span aria-hidden="true">✳</span><span>Considered fragrance</span><span aria-hidden="true">✳</span><span>Everyday rituals</span></div>
+
+    <section id="collection" class="collection section-space" aria-labelledby="collection-heading">
+      <div class="section-intro"><p class="eyebrow">01 / The candle</p><h2 id="collection-heading">One vessel.<br><em>Three moods.</em></h2><p>A warm glass form. A scent for the way you want the room to feel. Explore the imagined collection below.</p></div>
+      <div class="product-layout">
+        <figure class="product-image"><img src="assets/candle-concept.webp" alt="Detail of the fictional Serewick amber candle vessel; the same concept image illustrates all scent options" width="1024" height="1536" loading="lazy"><figcaption>Amber vessel · Concept image shared across variants</figcaption></figure>
+        <div class="product-info">
+          <div class="product-topline"><span class="eyebrow">The evening collection</span><span class="item-number">Nº 01</span></div>
+          <h3 id="product-name">Cedar &amp; Still</h3>
+          <p id="scent-description" class="product-description">Dry cedar, soft amber, and the feeling of finally putting the day down.</p>
+          <div class="notes-row" aria-live="polite"><span class="notes-label">Scent notes</span><span id="scent-notes">Cedar · Amber · Soft musk</span></div>
+          <form id="product-config" aria-label="Choose a sample candle">
+            <fieldset class="choice-group"><legend>Scent <span id="scent-kind">/ Woody &amp; warm</span></legend>
+              <div class="scent-options">
+                <label class="option"><input type="radio" name="scent" value="cedar" checked><span>Cedar &amp; Still</span></label>
+                <label class="option"><input type="radio" name="scent" value="fig"><span>Fig After Rain</span></label>
+                <label class="option"><input type="radio" name="scent" value="tea"><span>Tea at Dusk</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="choice-group size-group"><legend>Size</legend>
+              <div class="size-options">
+                <label class="option size-option"><input type="radio" name="size" value="180" checked><span><strong>180 g</strong><small>A small moment</small></span></label>
+                <label class="option size-option"><input type="radio" name="size" value="300"><span><strong>300 g</strong><small>A longer evening</small></span></label>
+              </div>
+            </fieldset>
+            <div class="price-row"><span id="product-price" aria-live="polite">₹1,200</span><span>Illustrative price<br>No product is for sale</span></div>
+            <button class="button button-dark product-cta" type="button" data-open-inquiry>Try a gift inquiry <span aria-hidden="true">↗</span></button>
+            <p class="form-note">Interactive demo only. No checkout, payment, or message is sent.</p>
+          </form>
+          <div class="product-details">
+            <details><summary>The design idea <span aria-hidden="true">+</span></summary><p>An amber-toned vessel with a simple metal-colored lid. The concept pairs a tactile visual identity with three imagined fragrance directions. Materials and sizes are illustrative, not manufactured specifications.</p></details>
+            <details><summary>A candle-care reminder <span aria-hidden="true">+</span></summary><p>For any real candle, follow its maker’s instructions. Keep it away from children, pets, and anything flammable; use a stable, heat-resistant surface, and never leave a flame unattended.</p></details>
+            <details><summary>About this concept <span aria-hidden="true">+</span></summary><p>Serewick is a fictional creative portfolio project. The product image is AI-generated. Scents, sizes, prices, and gift options demonstrate an imagined customer experience. There are no real products, orders, or customer claims.</p></details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ritual" class="ritual" aria-labelledby="ritual-heading">
+      <div class="ritual-heading"><p class="eyebrow">02 / The ritual</p><h2 id="ritual-heading">Leave a little<br>room for <em>evening.</em></h2><p>Not every moment needs to become something.<br>Some can simply be enjoyed.</p></div>
+      <div class="ritual-list"><div><span>01</span><h3>Make space.</h3><p>A cleared table. An open book. A place to pause.</p></div><div><span>02</span><h3>Find your mood.</h3><p>Warm woods, green fig, or the quiet comfort of tea.</p></div><div><span>03</span><h3>Stay a while.</h3><p>Let the little things set the tone for the rest of the night.</p></div></div>
+    </section>
+
+    <section id="gifting" class="gifting section-space" aria-labelledby="gifting-heading">
+      <div class="gift-art" aria-hidden="true"><div class="gift-box"><span>serewick ✳</span><div class="ribbon-horizontal"></div><div class="ribbon-vertical"></div></div><span class="gift-art-caption">An imagined gift, thoughtfully wrapped.</span></div>
+      <div class="gifting-copy"><p class="eyebrow">03 / A thoughtful gesture</p><h2 id="gifting-heading">For the people<br>who make a <em>space.</em></h2><p>A housewarming. A thank-you. A little something just because. Imagine a personal note, your chosen scent, and a gift that feels considered.</p><button class="text-button" type="button" data-open-inquiry>Explore a custom gift <span aria-hidden="true">↗</span></button><p class="small-print">Sample gift inquiry · Made-up details only · Stays in this tab</p></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-top"><a class="wordmark footer-wordmark" href="#">serewick<span aria-hidden="true">✳</span></a><p>A small pause.<br>A softer evening.</p><a href="#main">Back to the beginning <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><p>Fictional brand &amp; product · AI-generated imagery · Concept demo</p><p>Designed as a portfolio experience. No orders or inquiries are transmitted.</p></div></footer>
+
+  <dialog id="inquiry-dialog" aria-labelledby="inquiry-title" aria-describedby="inquiry-disclosure">
+    <div class="dialog-heading"><p class="eyebrow">A thoughtful gesture</p><button class="close-button" type="button" id="close-dialog" aria-label="Close gift inquiry">×</button></div>
+    <div id="inquiry-form-panel"><h2 id="inquiry-title">Make it <em>personal.</em></h2><p id="inquiry-disclosure">Try this sample gift request with made-up details. Nothing is sent, saved, or ordered. Your entries are cleared when you close this window.</p>
+      <p id="selected-summary" class="selected-summary">Cedar &amp; Still · 180 g · ₹1,200 sample price</p>
+      <form id="inquiry-form" novalidate>
+        <div class="form-row"><div class="field"><label for="sample-name">Sample name or project label</label><input id="sample-name" name="sampleName" maxlength="60" autocomplete="off" placeholder="Alex Example" required aria-describedby="sample-name-error"><p class="error" id="sample-name-error"></p></div><div class="field"><label for="sample-email">Made-up email</label><input id="sample-email" name="sampleEmail" type="email" maxlength="100" autocomplete="off" placeholder="alex@example.com" required aria-describedby="sample-email-error"><p class="error" id="sample-email-error"></p></div></div>
+        <div class="form-row"><div class="field"><label for="sample-occasion">Occasion</label><select id="sample-occasion" name="occasion"><option>Just because</option><option>Housewarming</option><option>Thank-you</option><option>Team gifting</option><option>Something else</option></select></div><div class="field"><label for="sample-quantity">Number of gifts</label><input id="sample-quantity" name="quantity" type="number" min="1" max="100" step="1" value="1" required aria-describedby="sample-quantity-error"><p class="error" id="sample-quantity-error"></p></div></div>
+        <div class="field"><label for="sample-note">An imagined gift note <span>(optional)</span></label><textarea id="sample-note" name="note" rows="3" maxlength="240" placeholder="A little warmth for your new place." aria-describedby="note-count"></textarea><p class="character-count" id="note-count">0 / 240</p></div>
+        <div class="sample-fill-row"><button class="text-button" type="button" id="fill-example">Use sample details</button><span>No real details needed</span></div>
+        <button class="button button-dark" type="submit">Preview sample request <span aria-hidden="true">↗</span></button>
+      </form>
+    </div>
+    <div id="inquiry-success" hidden><span class="success-symbol" aria-hidden="true">✳</span><h2 tabindex="-1" id="success-title">A little warmth,<br><em>imagined.</em></h2><p>This is your demo preview. No inquiry was sent and no order was placed.</p><dl id="request-preview"></dl><p class="success-footnote">Illustrative pricing only. This is not a quote or a payment request.</p><button class="button button-dark" type="button" id="edit-request">Edit sample request <span aria-hidden="true">↗</span></button><button class="text-button finish-button" type="button" id="finish-request">Close &amp; clear details</button></div>
+  </dialog>
+</body>
+</html>
